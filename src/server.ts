@@ -1,38 +1,11 @@
-import { z } from 'zod';
 import fastify from "fastify";
-import { PrismaClient } from "@prisma/client";
-import { number } from 'zod/lib';
+import { UserController } from "./modules/user/userController";
 
 const app = fastify();
 
-const prisma = new PrismaClient();
 
-app.get('/users', async () => {
+app.post('/users', UserController.CreateUser)
 
-    const users = await prisma.user.findMany();
-
-    return { users }
-
-})
-
-app.post('/users', async ( request, reply ) => {
-
-    const createUserSchema = z.object({
-        name: z.string(),
-        email: z.string().email()
-    })
-
-    const { name, email } = createUserSchema.parse(request.body);
-
-    await prisma.user.create({
-        data: {
-            name,
-            email
-        }
-    })
-
-    return reply.status(201).send()
-})
 
 app.listen({
     host: "0.0.0.0",
