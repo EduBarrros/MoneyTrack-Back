@@ -32,13 +32,13 @@ export const AuthController = {
             return reply.status(200).send({
                 status: 1,
                 user: {
+                    id: user.id,
                     name: user.name,
                     emial: user.email
                 }
             })
 
         } catch (error) {
-
             if (error instanceof z.ZodError) {
                 const formattedError = error.format()
                 reply.status(400).send({ status: 0, error: formattedError })

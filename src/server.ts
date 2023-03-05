@@ -1,12 +1,14 @@
 import fastify from "fastify";
 import { UserController } from "./modules/user/userController";
 import { AuthController } from "./modules/auth/authController";
+import { TransactionController } from "./modules/transaction/transactionController";
 
 const app = fastify();
 
 
 app.post('/users', UserController.CreateUser)
 app.post('/login', AuthController.LogIn)
+app.post('/transaction', TransactionController.CreateTransaction)
 
 
 app.listen({
