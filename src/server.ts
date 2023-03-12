@@ -1,10 +1,16 @@
 import fastify from "fastify";
+import cors from '@fastify/cors'
 import { UserController } from "./modules/user/userController";
 import { AuthController } from "./modules/auth/authController";
 import { TransactionController } from "./modules/transaction/transactionController";
 
 const app = fastify();
 
+app.register(cors, {
+    origin: true, // Habilita qualquer origem (acesso cruzado de qualquer origem)
+    methods: ['GET', 'POST'], // Define os métodos HTTP permitidos
+    allowedHeaders: ['Content-Type'], // Define os cabeçalhos permitidos
+})
 
 app.post('/users', UserController.CreateUser)
 app.post('/login', AuthController.LogIn)
