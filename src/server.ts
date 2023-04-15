@@ -12,9 +12,10 @@ app.register(cors, {
     allowedHeaders: ['Content-Type'], // Define os cabeçalhos permitidos
 })
 
-app.post('/users', UserController.CreateUser)
-app.post('/login', AuthController.LogIn)
-app.post('/transaction', TransactionController.CreateTransaction)
+app.post('/CreateUser', UserController.CreateUser)
+app.get('/Login', AuthController.LogIn)
+app.post('/CreateTransaction', TransactionController.CreateTransaction)
+app.get('/GetTransactionsByUserId', TransactionController.GetAllTransactionsByUserId)
 
 
 app.listen({

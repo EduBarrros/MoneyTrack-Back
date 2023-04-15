@@ -13,7 +13,7 @@ export const AuthController = {
                 password: z.string()
             })
 
-            const { email, password } = createLogInSchema.parse(request.body);
+            const { email, password } = createLogInSchema.parse(request.query);
 
             const user = await prisma.user.findUnique({
                 where: {
