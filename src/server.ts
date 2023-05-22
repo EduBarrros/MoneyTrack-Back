@@ -16,6 +16,8 @@ app.post('/CreateUser', UserController.CreateUser)
 app.get('/Login', AuthController.LogIn)
 app.post('/CreateTransaction', TransactionController.CreateTransaction)
 app.get('/GetTransactionsByUserId', TransactionController.GetAllTransactionsByUserId)
+app.delete('/DeleteTransactionById', TransactionController.DeleteTransactionById)
+app.post('/UpdateTransactionById', TransactionController.UpdateTransactionsByTransactionId)
 
 
 app.listen({
