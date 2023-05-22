@@ -8,7 +8,7 @@ const app = fastify();
 
 app.register(cors, {
     origin: true, // Habilita qualquer origem (acesso cruzado de qualquer origem)
-    methods: ['GET', 'POST'], // Define os métodos HTTP permitidos
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define os métodos HTTP permitidos
     allowedHeaders: ['Content-Type'], // Define os cabeçalhos permitidos
 })
 
