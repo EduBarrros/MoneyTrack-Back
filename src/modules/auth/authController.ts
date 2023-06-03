@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export const AuthController = {
 
     async LogIn(request: any, reply: any) {
-
+        console.log('Teste')
         try {
             const createLogInSchema = z.object({
                 email: z.string().email(),

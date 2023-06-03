@@ -7,7 +7,6 @@ export const UserController = {
 
     async CreateUser(request: any, reply: any) {
 
-        
         try {
             const createUserSchema = z.object({
                 name: z.string(),
