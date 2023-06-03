@@ -50,6 +50,7 @@ export const TransactionController = {
         }
     },
 
+    
     async GetAllTransactionsByUserId(request: any, reply: any) {
 
         try {
