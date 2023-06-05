@@ -99,9 +99,10 @@ export const TransactionController = {
                 transactionId: z.string(),
                 descricao: z.string().optional(),
                 valor: z.number().optional(),
+                type: z.number().optional()
             })
 
-            const { transactionId, descricao, valor } = updateTransactionsByIdSchema.parse(request.body);
+            const { transactionId, descricao, valor, type} = updateTransactionsByIdSchema.parse(request.body);
 
             const verifyTransaction = await prisma.transaction.findUnique({
                 where: {
@@ -119,7 +120,8 @@ export const TransactionController = {
                 },
                 data: {
                     description: descricao ? descricao : verifyTransaction?.description,
-                    value: valor ? valor : verifyTransaction?.value
+                    value: valor ? valor : verifyTransaction?.value,
+                    type: type ? type : verifyTransaction?.type
                 }
             });
 
